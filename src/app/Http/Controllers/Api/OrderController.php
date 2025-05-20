@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\StorePartnershipRequest;
-use App\Http\Requests\UpdatePartnershipRequest;
-use App\Models\Partnership;
+use App\Http\Requests\StoreOrderRequest;
+use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Order;
+use App\Http\Controllers\Controller;
 
-class PartnershipController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return response()->json(Order::all());
     }
 
     /**
@@ -27,7 +28,7 @@ class PartnershipController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePartnershipRequest $request)
+    public function store(StoreOrderRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class PartnershipController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Partnership $partnership)
+    public function show(Order $order)
     {
         //
     }
@@ -43,7 +44,7 @@ class PartnershipController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Partnership $partnership)
+    public function edit(Order $order)
     {
         //
     }
@@ -51,7 +52,7 @@ class PartnershipController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePartnershipRequest $request, Partnership $partnership)
+    public function update(UpdateOrderRequest $request, Order $order)
     {
         //
     }
@@ -59,7 +60,7 @@ class PartnershipController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Partnership $partnership)
+    public function destroy(Order $order)
     {
         //
     }

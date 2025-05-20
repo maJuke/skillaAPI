@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\StoreWorkerRequest;
-use App\Http\Requests\UpdateWorkerRequest;
-use App\Models\Worker;
+use App\Http\Requests\StoreOrderTypeRequest;
+use App\Http\Requests\UpdateOrderTypeRequest;
+use App\Models\OrderType;
+use App\Http\Controllers\Controller;
 
-class WorkerController extends Controller
+class OrderTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class WorkerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreWorkerRequest $request)
+    public function store(StoreOrderTypeRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class WorkerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Worker $worker)
+    public function show(OrderType $orderType)
     {
         //
     }
@@ -43,7 +44,7 @@ class WorkerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Worker $worker)
+    public function edit(OrderType $orderType)
     {
         //
     }
@@ -51,7 +52,7 @@ class WorkerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateWorkerRequest $request, Worker $worker)
+    public function update(UpdateOrderTypeRequest $request, OrderType $orderType)
     {
         //
     }
@@ -59,7 +60,7 @@ class WorkerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Worker $worker)
+    public function destroy(OrderType $orderType)
     {
         //
     }
