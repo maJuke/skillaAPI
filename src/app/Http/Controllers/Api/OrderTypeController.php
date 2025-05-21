@@ -6,15 +6,17 @@ use App\Http\Requests\StoreOrderTypeRequest;
 use App\Http\Requests\UpdateOrderTypeRequest;
 use App\Models\OrderType;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OrderTypeResource;
+use App\Http\Resources\OrderTypeCollection;
 
 class OrderTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): OrderTypeCollection
     {
-        //
+        return new OrderTypeCollection(OrderType::paginate(5));
     }
 
     /**
@@ -36,9 +38,9 @@ class OrderTypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OrderType $orderType)
+    public function show(OrderType $orderType): OrderTypeResource
     {
-        //
+        return new OrderTypeResource($orderType);
     }
 
     /**

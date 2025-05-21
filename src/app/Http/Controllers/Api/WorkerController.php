@@ -6,6 +6,8 @@ use App\Http\Requests\StoreWorkerRequest;
 use App\Http\Requests\UpdateWorkerRequest;
 use App\Models\Worker;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\WorkerResource;
+use App\Http\Resources\WorkerCollection;
 
 class WorkerController extends Controller
 {
@@ -14,7 +16,7 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        //
+        return new WorkerCollection(Worker::paginate(5));
     }
 
     /**
@@ -38,7 +40,7 @@ class WorkerController extends Controller
      */
     public function show(Worker $worker)
     {
-        //
+        return new WorkerResource($worker);
     }
 
     /**

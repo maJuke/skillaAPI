@@ -6,6 +6,8 @@ use App\Http\Requests\StorePartnershipRequest;
 use App\Http\Requests\UpdatePartnershipRequest;
 use App\Models\Partnership;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PartnershipResource;
+use App\Http\Resources\PartnershipCollection;
 
 class PartnershipController extends Controller
 {
@@ -14,7 +16,7 @@ class PartnershipController extends Controller
      */
     public function index()
     {
-        //
+        return new PartnershipCollection(Partnership::all());
     }
 
     /**
@@ -38,7 +40,7 @@ class PartnershipController extends Controller
      */
     public function show(Partnership $partnership)
     {
-        //
+        return new PartnershipResource($partnership);
     }
 
     /**

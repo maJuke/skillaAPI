@@ -12,8 +12,6 @@ class UserController extends Controller
 {
     public function index()
     {
-        // return response()->json(User::all());
-
         return new UserCollection(User::paginate());
     }
 
@@ -25,7 +23,6 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        // return response()->json(User::findOrFail($id));
         return new UserResource($user);
     }
 
