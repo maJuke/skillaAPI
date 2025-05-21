@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreOrderRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreOrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,22 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'orderTypeId' => ['required','integer'],
+            'partnershipId' => ['required','integer'],
+            'userId' => ['required','integer'],
+            'description' => ['string'],
+            'date' => ['required', 'date'],
+            'address' => ['required','string'],
+            'amount' => ['required','integer'],
+            'status' => ['required','integer'],
         ];
+    }
+
+    protected function prepareForValidation(): void {
+        $this->merge([
+            'type_id' => $this->orderTypeId,
+            'partnership_id' => $this->partnershipId,
+            'user_id' => $this->userId,
+        ]);
     }
 }
