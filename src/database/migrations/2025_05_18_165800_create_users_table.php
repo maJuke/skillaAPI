@@ -11,7 +11,6 @@ return new class extends Migration {
             $table->id();
             $table->string('name')->nullable(false);
             $table->string('surname')->nullable(false);
-            $table->foreignId('partnership_id')->constrained()->cascadeOnDelete();
             $table->customTimestamps();
         });
 
