@@ -16,7 +16,7 @@ class WorkerResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'secondName' => $this->second_name ?? 'N/A',
+            'secondName' => $this->second_name,
             'surname' => $this->surname,
             'phone' => $this->phone,
         ];
