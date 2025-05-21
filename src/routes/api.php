@@ -15,4 +15,5 @@ Route::apiResource('ordertypes', OrderTypeController::class);
 
 Route::apiResource('partnerships', PartnershipController::class);
 
+Route::get('workers/available-for-order-types', [WorkerController::class, 'workersForExactOrderTypes']);
 Route::apiResource('workers', WorkerController::class);

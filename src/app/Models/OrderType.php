@@ -15,6 +15,10 @@ class OrderType extends Model
     }
 
     public function workers() {
-        return $this->belongsToMany(Worker::class,'worker_ex_order_type', 'type_id', 'worker_id');
+        return $this->belongsToMany(
+            Worker::class,
+            'worker_ex_order_type',
+             'type_id',
+             'worker_id');
     }
 }

@@ -8,9 +8,14 @@ use App\Models\Worker;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\WorkerResource;
 use App\Http\Resources\WorkerCollection;
+use App\Services\WorkerFilterService;
+use Illuminate\Http\Request;
 
 class WorkerController extends Controller
 {
+
+    private $workerFilterService;
+
     /**
      * Display a listing of the resource.
      */
@@ -65,5 +70,12 @@ class WorkerController extends Controller
     public function destroy(Worker $worker)
     {
         //
+    }
+
+    public function workersForExactOrderTypes(Request $request, WorkerFilterService $workerFilterService) {
+
+        $typeIds = $request->input("typeIds", []);
+
+        return response()->json($workerFilterService->getWorkersAvailableToOrderTypes($typeIds));
     }
 }
