@@ -16,7 +16,7 @@ optimize:
 	docker exec -it $(APP_CONTAINER) php artisan view:cache
 
 migrate:
-	docker exec -it $(APP_CONTAINER) php artisan migrate
+	docker exec -it $(APP_CONTAINER) php artisan migrate:fresh --seed
 
 up:
 	docker-compose up -d --build
