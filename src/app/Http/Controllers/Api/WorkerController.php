@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\AssignWorkerToOrderRequest;
 use App\Http\Requests\StoreWorkerRequest;
 use App\Http\Requests\UpdateWorkerRequest;
 use App\Models\Worker;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\WorkerResource;
 use App\Http\Resources\WorkerCollection;
+use App\Services\AssignWorkerToOrderService;
 use App\Services\WorkerFilterService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class WorkerController extends Controller
@@ -72,10 +75,26 @@ class WorkerController extends Controller
         //
     }
 
-    public function workersForExactOrderTypes(Request $request, WorkerFilterService $workerFilterService) {
+    public function workersForExactOrderTypes(Request $request, WorkerFilterService $workerFilterService): JsonResponse {
 
         $typeIds = $request->input("typeIds", []);
 
         return response()->json($workerFilterService->getWorkersAvailableToOrderTypes($typeIds));
+    }
+
+    public function assignWorkerToOrder(AssignWorkerToOrderRequest $request, AssignWorkerToOrderService $service): JsonResponse {
+        $order = $service->assign(
+            $request->input('order_id'),
+            $request->input('worker_id'),
+            [
+                'amount' => $request->input('amount'),
+                'updated_at' => now(),
+            ]
+        );
+
+        return response()->json([
+            'message' => 'Worker assigned successfully.',
+            'order' => $order,
+        ]);
     }
 }

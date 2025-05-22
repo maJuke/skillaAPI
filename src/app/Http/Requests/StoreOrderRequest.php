@@ -23,14 +23,14 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'orderTypeId' => ['required','integer'],
-            'partnershipId' => ['required','integer'],
-            'userId' => ['required','integer'],
-            'description' => ['string'],
-            'date' => ['required', 'date'],
-            'address' => ['required','string'],
-            'amount' => ['required','integer'],
-            'status' => ['required','integer'],
+            'orderTypeId' => 'required|integer',
+            'partnershipId' => 'required|integer',
+            'userId' => 'required|integer',
+            'description' => 'string',
+            'date' => 'required|date',
+            'address' => 'required|string',
+            'amount' => 'required|integer',
+            'status' => 'required|integer',
         ];
     }
 

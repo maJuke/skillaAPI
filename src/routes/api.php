@@ -15,5 +15,6 @@ Route::apiResource('ordertypes', OrderTypeController::class);
 
 Route::apiResource('partnerships', PartnershipController::class);
 
+Route::post('workers/assign-worker-to-order', [WorkerController::class, 'assignWorkerToOrder']);
 Route::get('workers/available-for-order-types', [WorkerController::class, 'workersForExactOrderTypes']);
 Route::apiResource('workers', WorkerController::class);
