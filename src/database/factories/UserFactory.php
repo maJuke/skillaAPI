@@ -16,11 +16,14 @@ class UserFactory extends Factory {
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
-    {
+    public function definition(): array {
+        $secret = Str::random(40);
+        $hashedSecret = bcrypt($secret);
+
         return [
             'name' => fake()->name(),
             'surname' => $this->faker->lastName(),
+            'secret' => $hashedSecret,
             'partnership_id' => Partnership::inRandomOrder()->first()?->id,
             'created_at' => $this->faker->dateTimeThisDecade(),
         ];

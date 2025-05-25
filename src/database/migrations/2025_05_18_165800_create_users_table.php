@@ -11,6 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('name')->nullable(false);
             $table->string('surname')->nullable(false);
+            $table->string('secret');
+            $table->rememberToken();
             $table->customTimestamps();
         });
 
